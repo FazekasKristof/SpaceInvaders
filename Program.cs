@@ -3,8 +3,8 @@
     internal class Program
     {
         static Random r = new Random();
-        static char[,] map = new char[10, 50];
-        static char[] playerLayer = new char[25];
+        static char[,] map = new char[10, 45];
+        static char[] playerLayer = new char[45];
         static void GeneratePlayer()
         {
             for (int i = 0; i < playerLayer.Length; i++)
@@ -55,8 +55,8 @@
         {
             GenerateMap();
             GenerateEnemy();
-            GeneratePlayer();
             DisplayMap();
+            GeneratePlayer();
             Console.Read();
         }
     }
