@@ -1,4 +1,6 @@
-﻿namespace SpaceInvaders
+﻿using System.Diagnostics;
+
+namespace SpaceInvaders
 {
     internal class Program
     {
@@ -25,7 +27,7 @@
             {
                 for (int j = 0; j < map.GetLength(1); j++)
                 {
-                    map[i, j] = 'x';
+                    map[i, j] = ' ';
                 }
             }
         }
@@ -54,6 +56,33 @@
                 }
             }
         }
+        static void EnemyMovement()
+        {
+            
+        }
+        static void Bullet()
+        {
+            int bulletX = map.GetLength(1) / 2;
+            int bulletY = map.GetLength(0) - 2;
+            while (true)
+            {
+                ConsoleKeyInfo keyInfo = Console.ReadKey(intercept: true);
+                if (keyInfo.Key == ConsoleKey.Spacebar)
+                {
+                    bulletY = map.GetLength(0) - 1;
+                    while (bulletY > 0)
+                    {
+                        map[bulletY, bulletX] = '|';
+                        Console.Clear();
+                        DisplayMap();
+                        GeneratePlayer();
+                        Thread.Sleep(250);
+                        map[bulletY, bulletX] = ' ';
+                        bulletY--;
+                    }
+                }
+            }
+        }
         static void DisplayMap()
         {
             for (int i = 0; i < map.GetLength(0); i++)
@@ -72,6 +101,7 @@
             GenerateBaricade();
             DisplayMap();
             GeneratePlayer();
+            Bullet();
             Console.Read();
         }
     }
