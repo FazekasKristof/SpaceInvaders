@@ -40,6 +40,20 @@
                 }
             }
         }
+        static void GenerateBaricade()
+        {
+            for (int j = 7; j < map.GetLength(1) - 7; j++)
+            {
+                if (j % 5 == 0)
+                {
+                    map[(map.GetLength(0) - 1), j] = ' ';
+                }
+                else
+                {
+                    map[(map.GetLength(0) - 1), j] = '▀';
+                }
+            }
+        }
         static void DisplayMap()
         {
             for (int i = 0; i < map.GetLength(0); i++)
@@ -55,6 +69,7 @@
         {
             GenerateMap();
             GenerateEnemy();
+            GenerateBaricade();
             DisplayMap();
             GeneratePlayer();
             Console.Read();
