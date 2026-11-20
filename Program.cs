@@ -1,5 +1,21 @@
 ﻿namespace SpaceInvaders
 {
+             static char[] playerLayer = new char[25];
+        static void GeneratePlayer()
+        {
+            for(int i = 0; i < playerLayer.Length; i++)
+            {
+                playerLayer[i] = ' ';
+            }
+            
+            playerLayer[Convert.ToInt32((playerLayer.Length / 2))]  = 'P';
+            
+            foreach (char item in playerLayer)
+            {
+               Console.Write(item);
+            }
+        }
+
     internal class Program
     {
         static Random r = new Random();
